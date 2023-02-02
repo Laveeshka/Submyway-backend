@@ -85,7 +85,13 @@ GEM
     debug (1.7.1)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
+    faker (3.1.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -192,6 +198,8 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   debug
+  dotenv-rails
+  faker
   jwt (~> 2.2)
   pg (~> 1.1)
   pry-byebug (~> 3.10, >= 3.10.1)
