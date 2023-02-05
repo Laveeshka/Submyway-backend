@@ -7,4 +7,5 @@ class User < ApplicationRecord
 
     #in-built validation
     validates :username, :email, uniqueness: { case_sensitive: false }
+    validates :username, :password, :password_confirmation, presence: true
 end
