@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
     #if there is an authorization header,
     # 1) grab the token from the header
     # 2) decode the token and return decoded token
-    def decode_token
+    def decoded_token
         if auth_header
             #we want the token only, so we grab the string at index 1 ("Bearer" string resides at index 0 after effecting split on auth_header)
             token = auth_header.split(" ")[1]
@@ -37,7 +37,7 @@ class ApplicationController < ActionController::API
 
     #if we have a successfully decoded token, let's find the current user
     def current_user
-        if decode_token
+        if decoded_token
             # 1) grab the <user_id> stored in the token
             # 2) find that user, Taken style
             user_id = decoded_token[0]['user_id']
