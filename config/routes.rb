@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index]
   resources :companies
   resources :subscriptions
+  resources :subscription_payments
   post '/login', to: 'auth#create'
   post '/auto_login', to: 'auth#auto_login'
   get '/logged_in', to: 'application#logged_in?'
