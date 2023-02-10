@@ -39,7 +39,7 @@ class SubscriptionPaymentsController < ApplicationController
     end
 
     def subscription_payment_params
-        params.permit(:next_payment_date, :subscription_id)
+        params.permit(:next_payment_date, :paid, :subscription_id)
     end
 
 end

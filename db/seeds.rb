@@ -22,6 +22,6 @@ netflix_sub = Subscription.create(user: ellie, company: netflix, status: true, f
 
 puts "Seeding subscription payments... "
 month_in_s = 4 * 7 * 24 * 60 * 60
-netflix_payment_1 = SubscriptionPayment.create(subscription: netflix_sub, next_payment_date: Time.now + month_in_s)
+netflix_payment_1 = SubscriptionPayment.create(subscription: netflix_sub, next_payment_date: Time.now + month_in_s, paid: false)
 
 puts "🎄 End of seeding... 🎄"
