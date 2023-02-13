@@ -6,7 +6,7 @@ class Subscription < ApplicationRecord
 
     # in-built validations
     validates :status, presence: true
-    validates :frequency, presence: true, numericality: true, inclusion: {in: [1, 2]}
+    validates :frequency, presence: true, numericality: true, inclusion: {in: [1]}
     validates :billing, presence: true, inclusion: {in: ["weekly", "monthly", "yearly"]}
     validates :pricing, presence: true, numericality: { greater_than: 0 }
     #validates :start_date, presence: true, comparison: { greater_than_or_equal_to: Time.new}

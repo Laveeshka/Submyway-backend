@@ -1,24 +1,24 @@
 class SubscriptionsController < ApplicationController
     def index
         subscriptions = current_user.subscriptions
-        render json: { subscriptions: subscriptions }, status: :ok
+        render json: subscriptions, each_serializer: SubscriptionSerializer ,status: :ok
     end
 
     def show
         subscription = find_subscription
-        render json: { subscription: subscription }, status: :ok
+        render json: subscription, status: :ok
     end
 
     def create
         new_subscription = current_user.subscriptions.build(subscription_params)
         new_subscription.save
-        render json: { subscription: new_subscription }, status: :created
+        render json: new_subscription, status: :created
     end
 
     def update
         subscription = find_subscription
         subscription.update!(subscription_params)
-        render json: { subscription: subscription }, status: :accepted
+        render json: subscription, status: :accepted
     end
 
     def destroy

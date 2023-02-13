@@ -19,9 +19,12 @@ spotify = Company.create(name: "Spotify")
 
 puts "Seeding subscriptions... "
 netflix_sub = Subscription.create(user: ellie, company: netflix, status: true, frequency: 1, billing: "monthly", pricing: 11.99, start_date: Time.now)
+spotify_sub = Subscription.create(user: ellie, company: spotify, status: true, frequency: 1, billing: "weekly", pricing: 10.99, start_date: Time.now)
 
 puts "Seeding subscription payments... "
 month_in_s = 4 * 7 * 24 * 60 * 60
+week_in_s = 7 * 24 * 60 * 60
 netflix_payment_1 = SubscriptionPayment.create(subscription: netflix_sub, next_payment_date: Time.now + month_in_s, paid: false)
+spotify_payment_1 = SubscriptionPayment.create(subscription: spotify_sub, next_payment_date: Time.now + week_in_s, paid: false)
 
 puts "🎄 End of seeding... 🎄"
