@@ -12,6 +12,7 @@ class SubscriptionsController < ApplicationController
     def create
         new_subscription = current_user.subscriptions.build(subscription_params)
         new_subscription.save
+        new_subscription.subscription_payments.create!(next_payment_date: new_subscription.start_date + time_in_s(new_subscription.billing), paid: false)
         render json: new_subscription, status: :created
     end
 
@@ -28,6 +29,18 @@ class SubscriptionsController < ApplicationController
     end
 
     private
+
+    def time_in_s(billing)
+        # case function here
+        case billing
+        when "weekly"
+            7 * 24 * 60 * 60
+        when "monthly"
+            4 * 7 * 24 * 60 * 60
+        when "yearly"
+            12 * 4 * 7 * 24 * 60 * 60
+        end
+    end
 
     def find_subscription
         subscription = Subscription.find_by(id: params[:id])
