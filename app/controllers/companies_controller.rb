@@ -6,25 +6,31 @@ class CompaniesController < ApplicationController
     end
 
     def create
-        new_company = Company.create!(company_params)
-        render json: { company: new_company }, status: :created
+        #new_company = Company.create!(company_params)
+        new_company = current_user.create!(company_params)
+        render json:  new_company, status: :created
     end
 
     def show
         company = find_company
-        render json: { company: company }, status: :ok
+        render json: company, status: :ok
     end
 
     def update
         company = find_company
         company.update!(company_params)
-        render json: { company: company }, status: :accepted
+        render json: company, status: :accepted
     end
 
     def destroy
         company = find_company
         company.destroy
         render json: { message: "Successfully deleted company" }, status: :ok
+    end
+
+    def find_or_create
+        company = Company.find_or_create_by(name: params[:name])
+        render json: company, status: :accepted
     end
 
     # -------------------------------------------------------------------------------

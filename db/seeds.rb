@@ -16,6 +16,10 @@ Profile.create(user: ellie, first_name: "Ellie", last_name: "Williams")
 puts "Seeding companies... "
 netflix = Company.create(name: "Netflix")
 spotify = Company.create(name: "Spotify")
+surfshark = Company.create(name: "Surfshark")
+notion = Company.create(name: "Notion")
+one_pass = Company.create(name: "One Pass")
+hello_fresh = Company.create(name: "Hello Fresh")
 
 puts "Seeding subscriptions... "
 netflix_sub = Subscription.create(user: ellie, company: netflix, status: true, frequency: 1, billing: "monthly", pricing: 11.99, start_date: Time.now)
