@@ -19,7 +19,7 @@ class SubscriptionsController < ApplicationController
 
     def update
         subscription = find_subscription
-        subscription.update!(subscription_params)
+        subscription.update!(update_params)
         #change date of latest payment date
         last_payment = subscription.subscription_payments.last
         last_payment.update!(next_payment_date: params[:start_date])

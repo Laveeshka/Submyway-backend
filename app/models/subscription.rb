@@ -3,6 +3,8 @@ class Subscription < ApplicationRecord
     belongs_to :company
     belongs_to :user
     has_many :subscription_payments, dependent: :destroy
+    has_many :subscription_categories, dependent: :destroy
+    has_many :categories, through: :subscription_categories
 
     # in-built validations
     validates :status, presence: true

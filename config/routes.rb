@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :companies
   resources :subscriptions
   resources :subscription_payments
+  resources :categories
+  resources :subscription_categories
   get '/next_payment/:id', to: 'subscription_payments#create_next_payment'
   post '/find_or_create_company', to: 'companies#find_or_create'
   post '/login', to: 'auth#create'
