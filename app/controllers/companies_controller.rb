@@ -1,13 +1,13 @@
 class CompaniesController < ApplicationController
 
     def index
-        companies = Company.all
+        companies = Company.all.order(:name)
+        #sort in ascending order
         render json: companies, status: :ok
     end
 
     def create
-        #new_company = Company.create!(company_params)
-        new_company = current_user.create!(company_params)
+        new_company = Company.create!(company_params)
         render json:  new_company, status: :created
     end
 

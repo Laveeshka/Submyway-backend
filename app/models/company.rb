@@ -4,6 +4,6 @@ class Company < ApplicationRecord
     has_many :users, through: :subscriptions
 
     # in-built validation
-    validates :name, uniqueness: { case_sensitive: false }
+    validates :name, uniqueness: { case_sensitive: false }, presence: true
 
 end
