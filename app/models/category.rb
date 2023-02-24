@@ -4,5 +4,5 @@ class Category < ApplicationRecord
     has_many :subscriptions, through: :subscription_categories
 
     #validation
-    validates :name, uniqueness: {case_sensitive: false}, presence: true
+    validates :title, uniqueness: {case_sensitive: false}, presence: true
 end
