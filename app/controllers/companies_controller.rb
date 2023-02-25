@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 
     def index
-        companies = Company.all.order(:name)
+        companies = Company.all.order('LOWER(name)')
         #sort in ascending order
         render json: companies, status: :ok
     end
