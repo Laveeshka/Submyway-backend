@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
     def index
-        categories = Category.all.order(:name)
+        categories = Category.all.order(:title)
         render json: categories, status: :ok
     end
 
@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
     def destroy
         category = find_category
         category.destroy
-        render json: {message: "Category was successfully deleted"} status: :accepted
+        render json: {message: "Category was successfully deleted"}, status: :accepted
     end
 
     private
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
     end
 
     def category_params
-        params.permit(:name, :color)
+        params.permit(:title, :color)
     end
 
 end
