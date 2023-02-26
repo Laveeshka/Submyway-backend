@@ -10,7 +10,7 @@ class SubscriptionCategoriesController < ApplicationController
     end
 
     def create
-        sub_cat - SubscriptionCategory.create!(sub_cat_params)
+        sub_cat = SubscriptionCategory.create!(sub_cat_params)
         render json: sub_cat, status: :created
     end
 

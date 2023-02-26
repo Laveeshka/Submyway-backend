@@ -7,7 +7,6 @@ class Subscription < ApplicationRecord
     has_many :categories, through: :subscription_categories
 
     # in-built validations
-    validates :status, presence: true
     validates :frequency, presence: true, numericality: true, inclusion: {in: [1]}
     validates :billing, presence: true, inclusion: {in: ["weekly", "monthly", "yearly"]}
     validates :pricing, presence: true, numericality: { greater_than: 0 }
