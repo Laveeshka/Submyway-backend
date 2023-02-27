@@ -21,7 +21,7 @@ class SubscriptionCategoriesController < ApplicationController
     end
 
     def destroy
-        sub_cat = find_sub_cat
+        sub_cat = SubscriptionCategory.find_by(category_id: params[:id])
         sub_cat.destroy
         render json: {message: "Subscription category was successfully deleted"}, status: :accepted
     end
