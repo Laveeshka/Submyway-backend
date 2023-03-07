@@ -4,10 +4,15 @@ class ApplicationController < ActionController::API
 
     #behold Rails magic
     before_action :authorized
+skip_before_action :authorized, only: [:home]
 
-    #creates a JWT with a secret
+#creates a JWT with a secret
     def encode_token(payload)
         JWT.encode(payload, ENV["JWT_SUPER_SECRET"] )
+    end
+
+    def home
+        render json: {message: "Wecome to Submyway's server"}
     end
 
     #below functions check for an authorized user and lock the API to prevent unauthorized access
