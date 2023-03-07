@@ -16,7 +16,6 @@ class AuthController < ApplicationController
     def auto_login
         token = params[:token]
         decoded_token = JWT.decode(token, ENV["JWT_SUPER_SECRET"], true, algorithm: 'HS256')
-        #binding.pry
         user_id = decoded_token[0]["user_id"]
         user = User.find_by(id: user_id)
         render json: { user: user }, status: :ok

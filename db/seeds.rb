@@ -32,8 +32,8 @@ netflix_payment_1 = SubscriptionPayment.create(subscription: netflix_sub, next_p
 spotify_payment_1 = SubscriptionPayment.create(subscription: spotify_sub, next_payment_date: Time.now, paid: false)
 
 puts "Seeding categories... "
-cat_entertainment = Category.create(title: "Entertainment")
-cat_music = Category.create(title: "Music")
+cat_entertainment = Category.create(title: "Entertainment", color: "#2065D1")
+cat_music = Category.create(title: "Music", color: "#2065D1")
 
 puts "Seeding subscription categories... "
 sub_cat_1 = SubscriptionCategory.create(subscription: netflix_sub, category: cat_entertainment)

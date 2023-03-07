@@ -15,7 +15,7 @@ class SubscriptionCategoriesController < ApplicationController
     end
 
     def update
-        sub_cat = find_sub_cat
+        sub_cat = SubscriptionCategory.find_by(category_id: params[:id])
         sub_cat.update(sub_cat_params)
         render json: sub_cat, status: :accepted
     end

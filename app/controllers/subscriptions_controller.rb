@@ -13,7 +13,6 @@ class SubscriptionsController < ApplicationController
         new_subscription = current_user.subscriptions.build(create_params)
         new_subscription.save
         new_subscription.subscription_payments.create!(next_payment_date: params[:start_date], paid: false)
-        #new_subscription.subscription_payments.create!(next_payment_date: new_subscription.start_date + time_in_s(new_subscription.billing), paid: false)
         render json: new_subscription, status: :created
     end
 
@@ -49,10 +48,6 @@ class SubscriptionsController < ApplicationController
     def find_subscription
         subscription = Subscription.find_by(id: params[:id])
     end
-    
-    # def subscription_params
-    #     params.permit(:company_id, :status, :frequency, :billing, :pricing, :start_date)
-    # end
 
     def create_params
         params.permit(:company_id, :status, :frequency, :billing, :pricing)
