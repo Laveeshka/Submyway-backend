@@ -8,7 +8,7 @@ skip_before_action :authorized, only: [:home]
 
 #creates a JWT with a secret
     def encode_token(payload)
-        JWT.encode(payload, ENV["JWT_SUPER_SECRET"] )
+        JWT.encode(payload, Rails.application.secrets.secret_key_base )
     end
 
     def home
@@ -32,7 +32,7 @@ skip_before_action :authorized, only: [:home]
             token = auth_header.split(" ")[1]
             #let's begin decoding
             begin
-               JWT.decode(token, ENV["JWT_SUPER_SECRET"], true, algorithm: 'HS256') 
+               JWT.decode(token, Rails.application.secrets.secret_key_base, true, algorithm: 'HS256') 
                #rescue out of an arising exception if the server receives a bad token
             rescue JWT::DecodeError
                 nil
