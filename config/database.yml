@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: submyway
-  username: submyway
-  password: <%= ENV["SUBMYWAH_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # database: submyway
+  # username: submyway
+  # password: <%= ENV["SUBMYWAY_DATABASE_PASSWORD"] %>
