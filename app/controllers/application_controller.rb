@@ -27,7 +27,6 @@ skip_before_action :authorized, only: [:home]
     # 1) grab the token from the header
     # 2) decode the token and return decoded token
     def decoded_token
-        puts "auth_header is #{auth_header}"
         if auth_header
             #we want the token only, so we grab the string at index 1 ("Bearer" string resides at index 0 after effecting split on auth_header)
             token = auth_header.split(" ")[1]
